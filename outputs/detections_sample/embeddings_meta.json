@@ -1,0 +1,142 @@
+[
+  {
+    "crop_path": "outputs/detections_sample/crops/crop_000.jpg",
+    "gender": "Male",
+    "race": "Black",
+    "age_group": "10-19",
+    "prob": 0.9999738931655884
+  },
+  {
+    "crop_path": "outputs/detections_sample/crops/crop_001.jpg",
+    "gender": "Female",
+    "race": "White",
+    "age_group": "3-9",
+    "prob": 0.9994757771492004
+  },
+  {
+    "crop_path": "outputs/detections_sample/crops/crop_002.jpg",
+    "gender": "Female",
+    "race": "Black",
+    "age_group": "3-9",
+    "prob": 0.9994420409202576
+  },
+  {
+    "crop_path": "outputs/detections_sample/crops/crop_003.jpg",
+    "gender": "Female",
+    "race": "Black",
+    "age_group": "30-39",
+    "prob": 0.9999998807907104
+  },
+  {
+    "crop_path": "outputs/detections_sample/crops/crop_004.jpg",
+    "gender": "Male",
+    "race": "Indian",
+    "age_group": "20-29",
+    "prob": 0.999998927116394
+  },
+  {
+    "crop_path": "outputs/detections_sample/crops/crop_005.jpg",
+    "gender": "Female",
+    "race": "White",
+    "age_group": "40-49",
+    "prob": 0.9998162388801575
+  },
+  {
+    "crop_path": "outputs/detections_sample/crops/crop_006.jpg",
+    "gender": "Male",
+    "race": "Middle Eastern",
+    "age_group": "30-39",
+    "prob": 0.9996446371078491
+  },
+  {
+    "crop_path": "outputs/detections_sample/crops/crop_007.jpg",
+    "gender": "Male",
+    "race": "White",
+    "age_group": "30-39",
+    "prob": 0.9952511787414551
+  },
+  {
+    "crop_path": "outputs/detections_sample/crops/crop_008.jpg",
+    "gender": "Female",
+    "race": "Southeast Asian",
+    "age_group": "30-39",
+    "prob": 0.9999947547912598
+  },
+  {
+    "crop_path": "outputs/detections_sample/crops/crop_009.jpg",
+    "gender": "Male",
+    "race": "East Asian",
+    "age_group": "50-59",
+    "prob": 1.0
+  },
+  {
+    "crop_path": "outputs/detections_sample/crops/crop_010.jpg",
+    "gender": "Female",
+    "race": "Latino_Hispanic",
+    "age_group": "3-9",
+    "prob": 1.0
+  },
+  {
+    "crop_path": "outputs/detections_sample/crops/crop_011.jpg",
+    "gender": "Male",
+    "race": "Latino_Hispanic",
+    "age_group": "50-59",
+    "prob": 0.9999997615814209
+  },
+  {
+    "crop_path": "outputs/detections_sample/crops/crop_012.jpg",
+    "gender": "Male",
+    "race": "Indian",
+    "age_group": "40-49",
+    "prob": 0.9999749660491943
+  },
+  {
+    "crop_path": "outputs/detections_sample/crops/crop_013.jpg",
+    "gender": "Male",
+    "race": "Indian",
+    "age_group": "10-19",
+    "prob": 0.9995970129966736
+  },
+  {
+    "crop_path": "outputs/detections_sample/crops/crop_014.jpg",
+    "gender": "Female",
+    "race": "Indian",
+    "age_group": "20-29",
+    "prob": 0.9999874830245972
+  },
+  {
+    "crop_path": "outputs/detections_sample/crops/crop_015.jpg",
+    "gender": "Male",
+    "race": "Latino_Hispanic",
+    "age_group": "30-39",
+    "prob": 0.9995864033699036
+  },
+  {
+    "crop_path": "outputs/detections_sample/crops/crop_016.jpg",
+    "gender": "Female",
+    "race": "White",
+    "age_group": "20-29",
+    "prob": 0.9999597072601318
+  },
+  {
+    "crop_path": "outputs/detections_sample/crops/crop_017.jpg",
+    "gender": "Male",
+    "race": "Southeast Asian",
+    "age_group": "20-29",
+    "prob": 0.9771838188171387
+  },
+  {
+    "crop_path": "outputs/detections_sample/crops/crop_018.jpg",
+    "gender": "Male",
+    "race": "Southeast Asian",
+    "age_group": "3-9",
+    "prob": 1.0
+  },
+  {
+    "crop_path": "outputs/detections_sample/crops/crop_019.jpg",
+    "gender": "Female",
+    "race": "Latino_Hispanic",
+    "age_group": "30-39",
+    "prob": 0.9956847429275513
+  }
+]

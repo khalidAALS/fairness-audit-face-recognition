@@ -1,0 +1,26 @@
+#Virtual env
+.venv/
+
+#Python cache
+__pycache__/
+*.pyc
+
+#OS / editor
+.DS_Store
+.ipynb_checkpoints/
+
+#Raw and heavy data 
+data/raw/
+data/processed/
+
+#Models & embeddings 
+models/
+outputs/**/*.npy
+outputs/**/*.pt
+outputs/**/*.pth
+
+#keeps dashboard artefacts
+!outputs/reports/
+!outputs/reports/*.csv
+!outputs/reports/*.json
+!outputs/fairface_labels_val.csv

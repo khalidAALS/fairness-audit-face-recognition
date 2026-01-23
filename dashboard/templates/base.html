@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FairFace Audit Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand">FairFace Audit</div>
+      <nav class="nav">
+        <a href="/" class="{% if request.path=='/' %}active{% endif %}">Overview</a>
+        <a href="/compare" class="{% if request.path.startswith('/compare') %}active{% endif %}">Compare</a>
+        <a href="/plugin" class="{% if request.path.startswith('/plugin') %}active{% endif %}">Plugin Audit</a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="tiny">Dataset: FairFace (val)</div>
+        <div class="tiny">Task: Gender classification audit</div>
+      </div>
+    </aside>
+
+    <main class="content">
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+</body>
+</html>

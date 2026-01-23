@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Overview</h1>
+  <p class="subtitle">Facial Recognition Fairness Auditing Platform (Baseline vs Mitigation)</p>
+
+  <div class="grid">
+    <div class="card">
+      <div class="card-title">Baseline (FaceNet embeddings)</div>
+      <div class="metric">
+        <div class="metric-label">Accuracy</div>
+        <div class="metric-value">{{ (baseline.overall.acc * 100) | round(2) }}%</div>
+      </div>
+      <div class="metric-row">
+        <div>FPR: {{ (baseline.overall.fpr * 100) | round(2) }}%</div>
+        <div>FNR: {{ (baseline.overall.fnr * 100) | round(2) }}%</div>
+      </div>
+      <div class="tiny">Detected faces (val): {{ baseline.n_val_detected }}</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Mitigated (Fair ArcFace backbone)</div>
+      <div class="metric">
+        <div class="metric-label">Accuracy</div>
+        <div class="metric-value">{{ (mitigated.overall.acc * 100) | round(2) }}%</div>
+      </div>
+      <div class="metric-row">
+        <div>FPR: {{ (mitigated.overall.fpr * 100) | round(2) }}%</div>
+        <div>FNR: {{ (mitigated.overall.fnr * 100) | round(2) }}%</div>
+      </div>
+      <div class="tiny">Detected faces (val): {{ mitigated.n_val_detected }}</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Quick Links</div>
+      <a class="btn" href="/compare">Open comparison</a>
+
+      <div style="height:12px"></div>
+
+      <div class="tiny">Download artefacts:</div>
+      <div class="download-list">
+        <a href="/download/baseline_gender_val_summary.json">baseline summary JSON</a>
+        <a href="/download/fair_arcface_gender_val_summary.json">mitigated summary JSON</a>
+        <a href="/download/baseline_gender_val_by_race.csv">baseline by race CSV</a>
+        <a href="/download/fair_arcface_gender_val_by_race.csv">mitigated by race CSV</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Plugin Audit</h1>
+  <p class="subtitle">
+    Upload a CSV from any face recognition system (or classifier) to compute fairness metrics.
+  </p>
+
+  <div class="grid" style="grid-template-columns: 1fr 1fr; align-items:start;">
+    <div class="card">
+      <div class="card-title">Upload CSV</div>
+      <form action="/plugin" method="post" enctype="multipart/form-data">
+        <label class="tiny">CSV file</label><br/>
+        <input type="file" name="file" accept=".csv" required>
+        <div style="height:12px"></div>
+
+        <div class="tiny">
+          Required columns: <b>y_true</b>, <b>race</b>, <b>age_group</b> + either <b>y_pred</b> or <b>y_score</b>.<br/>
+          If you include <b>y_score</b> (0–1), the plugin can run mitigation (threshold tuning).
+        </div>
+
+        <div style="height:10px"></div>
+        <button class="btn" type="submit">Run Audit</button>
+      </form>
+
+      <div style="height:14px"></div>
+      <div class="tiny">
+        Download sample CSV format:
+        <a href="/download_sample_csv">sample_plugin_input.csv</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">CSV Requirements</div>
+      <div class="tiny">
+        Required:
+        <ul>
+          <li><b>y_true</b> (0/1)</li>
+          <li><b>race</b> (e.g., White, Black, East Asian...)</li>
+          <li><b>age_group</b> (e.g., 20-29, 30-39...)</li>
+          <li><b>y_pred</b> (0/1) OR <b>y_score</b> (0–1)</li>
+        </ul>
+        Notes:
+        <ul>
+          <li>If only <b>y_score</b> is provided, baseline predictions are made with threshold 0.5.</li>
+          <li>Mitigation searches for a threshold that reduces demographic disparity (FPR/FNR gaps).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  {% if result and result.error %}
+    <div class="card">
+      <div class="card-title">Error</div>
+      <div class="tiny">{{ result.error }}</div>
+    </div>
+  {% endif %}
+
+  {% if result and result.overall %}
+    <div class="grid" style="grid-template-columns: repeat(3, minmax(220px, 1fr));">
+      <div class="card">
+        <div class="card-title">Baseline Accuracy</div>
+        <div class="metric-value">{{ (result.overall.acc*100) | round(2) }}%</div>
+      </div>
+      <div class="card">
+        <div class="card-title">Baseline FPR</div>
+        <div class="metric-value">{{ (result.overall.fpr*100) | round(2) }}%</div>
+      </div>
+      <div class="card">
+        <div class="card-title">Baseline FNR</div>
+        <div class="metric-value">{{ (result.overall.fnr*100) | round(2) }}%</div>
+      </div>
+    </div>
+
+    <div class="grid" style="grid-template-columns: 1fr 1fr;">
+      <div class="card">
+        <div class="card-title">Baseline Disparity Gaps (Race)</div>
+        <div class="tiny">FPR gap: <b>{{ result.race_gaps.fpr_gap | round(4) }}</b></div>
+        <div class="tiny">FNR gap: <b>{{ result.race_gaps.fnr_gap | round(4) }}</b></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Baseline Disparity Gaps (Age)</div>
+        <div class="tiny">FPR gap: <b>{{ result.age_gaps.fpr_gap | round(4) }}</b></div>
+        <div class="tiny">FNR gap: <b>{{ result.age_gaps.fnr_gap | round(4) }}</b></div>
+      </div>
+    </div>
+
+    {% if mitigated and mitigated.error %}
+      <div class="card">
+        <div class="card-title">Mitigation</div>
+        <div class="tiny">{{ mitigated.error }}</div>
+      </div>
+    {% endif %}
+
+    {% if mitigated and mitigated.overall %}
+      <div class="card">
+        <div class="card-title">Mitigation (Threshold Tuning)</div>
+        <div class="tiny">
+          The system searches thresholds and selects the one that minimises demographic disparity
+          (FPR/FNR gaps) while limiting accuracy drop.
+        </div>
+
+        <div class="metric-row">
+          <div><b>Chosen threshold</b>: {{ mitigated.threshold | round(3) }}</div>
+          <div><b>Baseline disparity score</b>: {{ mitigated.baseline_disparity_score | round(4) }}</div>
+          <div><b>Mitigated disparity score</b>: {{ mitigated.mitigated_disparity_score | round(4) }}</div>
+          <div><b>Disparity reduction</b>: {{ mitigated.disparity_reduction_pct | round(2) }}%</div>
+        </div><br>
+
+        <div class="grid" style="grid-template-columns: repeat(3, minmax(220px, 1fr));">
+          <div class="card">
+            <div class="card-title">Mitigated Accuracy</div>
+            <div class="metric-value">{{ (mitigated.overall.acc*100) | round(2) }}%</div>
+          </div>
+          <div class="card">
+            <div class="card-title">Mitigated FPR</div>
+            <div class="metric-value">{{ (mitigated.overall.fpr*100) | round(2) }}%</div>
+          </div>
+          <div class="card">
+            <div class="card-title">Mitigated FNR</div>
+            <div class="metric-value">{{ (mitigated.overall.fnr*100) | round(2) }}%</div>
+          </div>
+        </div>
+
+        <div class="grid" style="grid-template-columns: 1fr 1fr;">
+          <div class="card">
+            <div class="card-title">Mitigated Gaps (Race)</div>
+            <div class="tiny">FPR gap: <b>{{ mitigated.race_gaps.fpr_gap | round(4) }}</b></div>
+            <div class="tiny">FNR gap: <b>{{ mitigated.race_gaps.fnr_gap | round(4) }}</b></div>
+          </div>
+          <div class="card">
+            <div class="card-title">Mitigated Gaps (Age)</div>
+            <div class="tiny">FPR gap: <b>{{ mitigated.age_gaps.fpr_gap | round(4) }}</b></div>
+            <div class="tiny">FNR gap: <b>{{ mitigated.age_gaps.fnr_gap | round(4) }}</b></div>
+          </div>
+        </div>
+
+        <div style="height:12px"></div>
+        <a class="btn" href="/download_mitigated_csv">Download mitigated_predictions.csv</a>
+      </div>
+    {% endif %}
+
+    <div class="card">
+      {{ chart_race_acc | safe }}
+    </div>
+
+    <div class="card">
+      {{ chart_age_acc | safe }}
+    </div>
+
+    <div class="card">
+      <div class="card-title">Download report</div>
+      <a class="btn" href="/download_plugin_report">Download audit_report.json</a>
+    </div>
+  {% endif %}
+{% endblock %}

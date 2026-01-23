@@ -1,0 +1,322 @@
+[
+  {
+    "index": 0,
+    "image_path": "data/raw/fairface/images/train/65360.jpg",
+    "gender": "Male",
+    "race": "Black",
+    "age_group": "10-19",
+    "detected": true,
+    "box": [
+      -97.58183288574219,
+      -115.87567138671875,
+      226.45298767089844,
+      268.73736572265625
+    ],
+    "prob": 0.9999738931655884,
+    "crop_path": "outputs/detections_sample/crops/crop_000.jpg"
+  },
+  {
+    "index": 1,
+    "image_path": "data/raw/fairface/images/train/43448.jpg",
+    "gender": "Female",
+    "race": "White",
+    "age_group": "3-9",
+    "detected": true,
+    "box": [
+      -9.071573257446289,
+      -42.86606216430664,
+      213.0738525390625,
+      223.46644592285156
+    ],
+    "prob": 0.9994757771492004,
+    "crop_path": "outputs/detections_sample/crops/crop_001.jpg"
+  },
+  {
+    "index": 2,
+    "image_path": "data/raw/fairface/images/train/61505.jpg",
+    "gender": "Female",
+    "race": "Black",
+    "age_group": "3-9",
+    "detected": true,
+    "box": [
+      10.745138168334961,
+      -20.55995750427246,
+      152.6289520263672,
+      179.473876953125
+    ],
+    "prob": 0.9994420409202576,
+    "crop_path": "outputs/detections_sample/crops/crop_002.jpg"
+  },
+  {
+    "index": 3,
+    "image_path": "data/raw/fairface/images/train/12424.jpg",
+    "gender": "Female",
+    "race": "Black",
+    "age_group": "30-39",
+    "detected": true,
+    "box": [
+      -37.04351806640625,
+      -80.96456909179688,
+      200.4522247314453,
+      241.1579132080078
+    ],
+    "prob": 0.9999998807907104,
+    "crop_path": "outputs/detections_sample/crops/crop_003.jpg"
+  },
+  {
+    "index": 4,
+    "image_path": "data/raw/fairface/images/train/79886.jpg",
+    "gender": "Male",
+    "race": "Indian",
+    "age_group": "20-29",
+    "detected": true,
+    "box": [
+      -13.933609962463379,
+      -58.5743408203125,
+      181.86349487304688,
+      211.1143341064453
+    ],
+    "prob": 0.999998927116394,
+    "crop_path": "outputs/detections_sample/crops/crop_004.jpg"
+  },
+  {
+    "index": 5,
+    "image_path": "data/raw/fairface/images/train/64105.jpg",
+    "gender": "Female",
+    "race": "White",
+    "age_group": "40-49",
+    "detected": true,
+    "box": [
+      9.375633239746094,
+      -14.27729606628418,
+      196.16920471191406,
+      196.0147705078125
+    ],
+    "prob": 0.9998162388801575,
+    "crop_path": "outputs/detections_sample/crops/crop_005.jpg"
+  },
+  {
+    "index": 6,
+    "image_path": "data/raw/fairface/images/train/33622.jpg",
+    "gender": "Male",
+    "race": "Middle Eastern",
+    "age_group": "30-39",
+    "detected": true,
+    "box": [
+      54.08967971801758,
+      -164.052001953125,
+      384.1865539550781,
+      262.6388854980469
+    ],
+    "prob": 0.9996446371078491,
+    "crop_path": "outputs/detections_sample/crops/crop_006.jpg"
+  },
+  {
+    "index": 7,
+    "image_path": "data/raw/fairface/images/train/32999.jpg",
+    "gender": "Male",
+    "race": "White",
+    "age_group": "30-39",
+    "detected": true,
+    "box": [
+      101.91050720214844,
+      -43.71293640136719,
+      278.0780334472656,
+      223.79934692382812
+    ],
+    "prob": 0.9952511787414551,
+    "crop_path": "outputs/detections_sample/crops/crop_007.jpg"
+  },
+  {
+    "index": 8,
+    "image_path": "data/raw/fairface/images/val/10790.jpg",
+    "gender": "Female",
+    "race": "Southeast Asian",
+    "age_group": "30-39",
+    "detected": true,
+    "box": [
+      -0.7480030059814453,
+      -59.4125862121582,
+      192.3858642578125,
+      215.54029846191406
+    ],
+    "prob": 0.9999947547912598,
+    "crop_path": "outputs/detections_sample/crops/crop_008.jpg"
+  },
+  {
+    "index": 9,
+    "image_path": "data/raw/fairface/images/train/8664.jpg",
+    "gender": "Male",
+    "race": "East Asian",
+    "age_group": "50-59",
+    "detected": true,
+    "box": [
+      -33.8785285949707,
+      -61.336944580078125,
+      181.88037109375,
+      209.00450134277344
+    ],
+    "prob": 1.0,
+    "crop_path": "outputs/detections_sample/crops/crop_009.jpg"
+  },
+  {
+    "index": 10,
+    "image_path": "data/raw/fairface/images/train/22566.jpg",
+    "gender": "Female",
+    "race": "Latino_Hispanic",
+    "age_group": "3-9",
+    "detected": true,
+    "box": [
+      -9.020092010498047,
+      -30.813020706176758,
+      164.52708435058594,
+      188.8850555419922
+    ],
+    "prob": 1.0,
+    "crop_path": "outputs/detections_sample/crops/crop_010.jpg"
+  },
+  {
+    "index": 11,
+    "image_path": "data/raw/fairface/images/train/86093.jpg",
+    "gender": "Male",
+    "race": "Latino_Hispanic",
+    "age_group": "50-59",
+    "detected": true,
+    "box": [
+      -33.97170639038086,
+      -48.350894927978516,
+      179.1906280517578,
+      203.85479736328125
+    ],
+    "prob": 0.9999997615814209,
+    "crop_path": "outputs/detections_sample/crops/crop_011.jpg"
+  },
+  {
+    "index": 12,
+    "image_path": "data/raw/fairface/images/train/67645.jpg",
+    "gender": "Male",
+    "race": "Indian",
+    "age_group": "40-49",
+    "detected": true,
+    "box": [
+      13.85599136352539,
+      -5.513528823852539,
+      190.64852905273438,
+      206.69924926757812
+    ],
+    "prob": 0.9999749660491943,
+    "crop_path": "outputs/detections_sample/crops/crop_012.jpg"
+  },
+  {
+    "index": 13,
+    "image_path": "data/raw/fairface/images/train/44469.jpg",
+    "gender": "Male",
+    "race": "Indian",
+    "age_group": "10-19",
+    "detected": true,
+    "box": [
+      -0.17798376083374023,
+      -27.585330963134766,
+      209.7757568359375,
+      229.46151733398438
+    ],
+    "prob": 0.9995970129966736,
+    "crop_path": "outputs/detections_sample/crops/crop_013.jpg"
+  },
+  {
+    "index": 14,
+    "image_path": "data/raw/fairface/images/train/34473.jpg",
+    "gender": "Female",
+    "race": "Indian",
+    "age_group": "20-29",
+    "detected": true,
+    "box": [
+      -25.957761764526367,
+      -0.8844394683837891,
+      154.3744659423828,
+      213.19419860839844
+    ],
+    "prob": 0.9999874830245972,
+    "crop_path": "outputs/detections_sample/crops/crop_014.jpg"
+  },
+  {
+    "index": 15,
+    "image_path": "data/raw/fairface/images/train/67721.jpg",
+    "gender": "Male",
+    "race": "Latino_Hispanic",
+    "age_group": "30-39",
+    "detected": true,
+    "box": [
+      78.85963439941406,
+      -197.17999267578125,
+      481.84967041015625,
+      396.1473388671875
+    ],
+    "prob": 0.9995864033699036,
+    "crop_path": "outputs/detections_sample/crops/crop_015.jpg"
+  },
+  {
+    "index": 16,
+    "image_path": "data/raw/fairface/images/train/83902.jpg",
+    "gender": "Female",
+    "race": "White",
+    "age_group": "20-29",
+    "detected": true,
+    "box": [
+      -16.96436882019043,
+      -47.922508239746094,
+      183.43231201171875,
+      214.63168334960938
+    ],
+    "prob": 0.9999597072601318,
+    "crop_path": "outputs/detections_sample/crops/crop_016.jpg"
+  },
+  {
+    "index": 17,
+    "image_path": "data/raw/fairface/images/train/68219.jpg",
+    "gender": "Male",
+    "race": "Southeast Asian",
+    "age_group": "20-29",
+    "detected": true,
+    "box": [
+      18.739173889160156,
+      -28.978477478027344,
+      203.28904724121094,
+      195.6321258544922
+    ],
+    "prob": 0.9771838188171387,
+    "crop_path": "outputs/detections_sample/crops/crop_017.jpg"
+  },
+  {
+    "index": 18,
+    "image_path": "data/raw/fairface/images/train/39665.jpg",
+    "gender": "Male",
+    "race": "Southeast Asian",
+    "age_group": "3-9",
+    "detected": true,
+    "box": [
+      18.57523536682129,
+      -30.444318771362305,
+      201.90036010742188,
+      203.1005096435547
+    ],
+    "prob": 1.0,
+    "crop_path": "outputs/detections_sample/crops/crop_018.jpg"
+  },
+  {
+    "index": 19,
+    "image_path": "data/raw/fairface/images/train/74592.jpg",
+    "gender": "Female",
+    "race": "Latino_Hispanic",
+    "age_group": "30-39",
+    "detected": true,
+    "box": [
+      -2.4909629821777344,
+      -78.37162017822266,
+      200.62132263183594,
+      219.96258544921875
+    ],
+    "prob": 0.9956847429275513,
+    "crop_path": "outputs/detections_sample/crops/crop_019.jpg"
+  }
+]

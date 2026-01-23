@@ -1,0 +1,19 @@
+{
+  "name": "baseline_gender_val",
+  "n_val_detected": 10681,
+  "overall": {
+    "acc": 0.7547046156726896,
+    "fpr": 0.2842146959794018,
+    "fnr": 0.2104048295454545,
+    "confusion": {
+      "tn": 3614,
+      "fp": 1435,
+      "fn": 1185,
+      "tp": 4447
+    }
+  },
+  "files": {
+    "by_race_csv": "outputs/reports/baseline_gender_val_by_race.csv",
+    "by_age_csv": "outputs/reports/baseline_gender_val_by_age.csv"
+  }
+}

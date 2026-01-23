@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Baseline vs Mitigation</h1>
+  <p class="subtitle">Comparative fairness metrics and subgroup performance</p>
+
+  <div class="grid">
+    <div class="card">
+      <div class="card-title">Overall Metrics (Val)</div>
+      <div class="metric-row">
+        <div><b>Baseline acc</b>: {{ (base.overall.acc*100) | round(2) }}%</div>
+        <div><b>Mitigated acc</b>: {{ (fair.overall.acc*100) | round(2) }}%</div>
+      </div>
+
+      <div class="metric-row">
+        <div><b>Δ acc</b>: {{ (delta_acc*100) | round(2) }}%</div>
+        <div><b>Δ FPR</b>: {{ (delta_fpr*100) | round(2) }}%</div>
+        <div><b>Δ FNR</b>: {{ (delta_fnr*100) | round(2) }}%</div>
+      </div>
+
+      <div class="tiny">
+        Negative ΔFPR / ΔFNR is good (lower error rates).
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Detected Faces</div>
+      <div class="metric-row">
+        <div>Baseline detected (val): <b>{{ base.n_val_detected }}</b></div>
+        <div>Mitigated detected (val): <b>{{ fair.n_val_detected }}</b></div>
+      </div>
+      <div class="tiny">Same detection pipeline; only embedding backbone differs.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Demographic Disparity Gaps (Race)</div>
+
+    <div class="metric-row">
+      <div><b>Baseline FPR gap</b>: {{ baseline_race_gaps["fpr_gap"] | round(4) }}</div>
+      <div><b>Mitigated FPR gap</b>: {{ mitigated_race_gaps["fpr_gap"] | round(4) }}</div>
+      <div><b>FPR gap reduction</b>: {{ race_pct_reduction["fpr_gap"] | round(2) }}%</div>
+    </div>
+
+    
+
+    <div class="metric-row">
+      <div><b>Baseline FNR gap</b>: {{ baseline_race_gaps["fnr_gap"] | round(4) }}</div>
+      <div><b>Mitigated FNR gap</b>: {{ mitigated_race_gaps["fnr_gap"] | round(4) }}</div>
+      <div><b>FNR gap reduction</b>: {{ race_pct_reduction["fnr_gap"] | round(2) }}%</div>
+    </div>
+
+    <div class="tiny">
+      Gap = max − min across demographic groups. Positive % indicates reduced disparity after mitigation.
+    </div>
+  </div><br>
+
+  <div class="card">
+    <div class="card-title">Demographic Disparity Gaps (Age Group)</div>
+  
+    <div class="metric-row">
+      <div><b>Baseline FPR gap</b>: {{ baseline_age_gaps["fpr_gap"] | round(4) }}</div>
+      <div><b>Mitigated FPR gap</b>: {{ mitigated_age_gaps["fpr_gap"] | round(4) }}</div>
+      <div><b>FPR gap reduction</b>: {{ age_pct_reduction["fpr_gap"] | round(2) }}%</div>
+    </div>
+  
+    <div class="metric-row">
+      <div><b>Baseline FNR gap</b>: {{ baseline_age_gaps["fnr_gap"] | round(4) }}</div>
+      <div><b>Mitigated FNR gap</b>: {{ mitigated_age_gaps["fnr_gap"] | round(4) }}</div>
+      <div><b>FNR gap reduction</b>: {{ age_pct_reduction["fnr_gap"] | round(2) }}%</div>
+    </div>
+  
+    <div class="tiny">
+      Gap = max − min across demographic groups. Positive % indicates reduced disparity after mitigation.
+    </div>
+  </div>
+  
+
+  <div class="card">
+    {{ chart_base_race_acc | safe }}
+  </div>
+  <div class="card">
+    {{ chart_fair_race_acc | safe }}
+  </div>
+
+  <div class="card">
+    {{ chart_base_age_acc | safe }}
+  </div>
+  <div class="card">
+    {{ chart_fair_age_acc | safe }}
+  </div>
+{% endblock %}
+

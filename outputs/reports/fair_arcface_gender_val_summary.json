@@ -1,0 +1,19 @@
+{
+  "name": "fair_arcface_gender_val",
+  "n_val_detected": 10681,
+  "overall": {
+    "acc": 0.7807321411852821,
+    "fpr": 0.26302238066943945,
+    "fnr": 0.18004261363636362,
+    "confusion": {
+      "tn": 3721,
+      "fp": 1328,
+      "fn": 1014,
+      "tp": 4618
+    }
+  },
+  "files": {
+    "by_race_csv": "outputs/reports/fair_arcface_gender_val_by_race.csv",
+    "by_age_csv": "outputs/reports/fair_arcface_gender_val_by_age.csv"
+  }
+}
