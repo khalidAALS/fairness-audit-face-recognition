@@ -24,3 +24,6 @@ outputs/**/*.pth
 !outputs/reports/*.csv
 !outputs/reports/*.json
 !outputs/fairface_labels_val.csv
+
+*.swp
+*.swo
