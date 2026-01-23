@@ -27,3 +27,9 @@ outputs/**/*.pth
 
 *.swp
 *.swo
+
+#Generated outputs to not commit
+outputs/*labels_train.csv
+outputs/*labels_val.csv
+outputs/fairface_labels_train.csv
+outputs/detections_sample/
