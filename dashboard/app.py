@@ -27,9 +27,54 @@ def load_table(name: str, table: str) -> pd.DataFrame:
     return pd.read_csv(p)
 
 def make_bar(df, x, y, title):
-    fig = px.bar(df, x=x, y=y, title=title, hover_data=["n", "fpr", "fnr"])
-    fig.update_layout(margin=dict(l=20, r=20, t=50, b=20), height=420)
-    return fig.to_html(full_html=False, include_plotlyjs="cdn")
+    colors = [
+        "#4e79a7", "#f28e2b", "#e15759", "#76b7b2",
+        "#59a14f", "#edc948", "#b07aa1", "#ff9da7",
+        "#9c755f", "#bab0ab"
+    ]
+
+    fig = px.bar(
+        df,
+        x=x,
+        y=y,
+        title=title,
+        color=x,  # makes each bar a different colour
+        color_discrete_sequence=colors,
+        hover_data=["n", "fpr", "fnr"]
+    )
+
+    fig.update_layout(
+        template="plotly_white",
+        margin=dict(l=20, r=20, t=60, b=40),
+        height=420,
+        showlegend=False,
+        font=dict(size=14),
+        title_x=0.5
+    )
+
+    fig.update_traces(
+        hovertemplate="<b>%{x}</b><br>"
+                      + f"{y.upper()}: " + "%{y:.4f}<br>"
+                      + "n: %{customdata[0]}<br>"
+                      + "FPR: %{customdata[1]:.4f}<br>"
+                      + "FNR: %{customdata[2]:.4f}<extra></extra>"
+    )
+
+    return fig.to_html(
+        full_html=False,
+        include_plotlyjs="cdn",
+        config={
+            "displayModeBar": True,
+            "displaylogo": False,
+            "toImageButtonOptions": {
+                "format": "png",
+                "filename": title.lower().replace(" ", "_"),
+                "height": 600,
+                "width": 1000,
+                "scale": 2
+            }
+        }
+    )
 
 def compute_rates_from_df(df, y_true_col="y_true", y_pred_col="y_pred"):
     from sklearn.metrics import confusion_matrix
@@ -341,16 +386,80 @@ def plugin():
 
         # Charts
         if len(by_race) > 0:
-            fig_r = px.bar(by_race, x="group", y="acc", title="Audit Accuracy by Race",
-                           hover_data=["n", "fpr", "fnr"])
-            fig_r.update_layout(margin=dict(l=20, r=20, t=50, b=20), height=420)
-            chart_race_acc = fig_r.to_html(full_html=False, include_plotlyjs="cdn")
+            fig_r = px.bar(
+            by_race,
+            x="group",
+            y="acc",
+            title="Audit Accuracy by Race",
+            color="group",
+            color_discrete_sequence=[
+                "#4e79a7", "#f28e2b", "#e15759", "#76b7b2",
+                "#59a14f", "#edc948", "#b07aa1", "#ff9da7"
+            ],
+            hover_data=["n", "fpr", "fnr"]
+        )
+
+        fig_r.update_layout(
+            template="plotly_white",
+            margin=dict(l=20, r=20, t=60, b=40),
+            height=420,
+            showlegend=False,
+            title_x=0.5
+        )
+
+        chart_race_acc = fig_r.to_html(
+            full_html=False,
+            include_plotlyjs="cdn",
+            config={
+                "displayModeBar": True,
+                "displaylogo": False,
+                "toImageButtonOptions": {
+                    "format": "png",
+                    "filename": "audit_accuracy_by_race",
+                    "height": 600,
+                    "width": 1000,
+                    "scale": 2
+                }
+            }
+        )
 
         if len(by_age) > 0:
-            fig_a = px.bar(by_age, x="group", y="acc", title="Audit Accuracy by Age Group",
-                           hover_data=["n", "fpr", "fnr"])
-            fig_a.update_layout(margin=dict(l=20, r=20, t=50, b=20), height=420)
-            chart_age_acc = fig_a.to_html(full_html=False, include_plotlyjs="cdn")
+            fig_a = px.bar(
+            by_age,
+            x="group",
+            y="acc",
+            title="Audit Accuracy by Age Group",
+            color="group",
+            color_discrete_sequence=[
+                "#4e79a7", "#f28e2b", "#e15759", "#76b7b2",
+                "#59a14f", "#edc948", "#b07aa1", "#ff9da7", "#9c755f"
+            ],
+            hover_data=["n", "fpr", "fnr"]
+        )
+
+        fig_a.update_layout(
+            template="plotly_white",
+            margin=dict(l=20, r=20, t=60, b=40),
+            height=420,
+            showlegend=False,
+            title_x=0.5
+        )
+
+        chart_age_acc = fig_a.to_html(
+            full_html=False,
+            include_plotlyjs="cdn",
+            config={
+                "displayModeBar": True,
+                "displaylogo": False,
+                "toImageButtonOptions": {
+                    "format": "png",
+                    "filename": "audit_accuracy_by_age_group",
+                    "height": 600,
+                    "width": 1000,
+                    "scale": 2
+                }
+            }
+        )
 
         # Baseline results
         result = {
@@ -452,6 +561,10 @@ def download_mitigated_csv():
         as_attachment=True,
         download_name="mitigated_predictions.csv",
     )
+
+@app.route("/help")
+def help_page():
+    return render_template("help.html")
 
 if __name__ == "__main__":
     app.run(debug=True)

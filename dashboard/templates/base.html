@@ -3,17 +3,18 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>FairFace Audit Dashboard</title>
+  <title>Audit Dashboard</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
   <div class="layout">
     <aside class="sidebar">
-      <div class="brand">FairFace Audit</div>
+      <div class="brand">Audit</div>
       <nav class="nav">
         <a href="/" class="{% if request.path=='/' %}active{% endif %}">Overview</a>
         <a href="/compare" class="{% if request.path.startswith('/compare') %}active{% endif %}">Compare</a>
         <a href="/plugin" class="{% if request.path.startswith('/plugin') %}active{% endif %}">Plugin Audit</a>
+        <a href="/help" class="{% if request.path.startswith('/help') %}active{% endif %}">Help (How to Use)</a>
       </nav>
 
       <div class="sidebar-footer">

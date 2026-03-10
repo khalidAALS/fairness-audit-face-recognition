@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Help and User Guide</h1>
+  <p class="subtitle">
+    Learn what the system does, how to use the dashboard and plugin,
+    and how to interpret the fairness metrics and mitigation results.
+  </p><br>
+
+  <div class="card">
+    <div class="card-title">What this system does</div>
+    <div class="tiny">
+      This system is a fairness auditing dashboard and mitigation tool for classification systems.
+      It evaluates performance differences across demographic groups, specifically race and age
+      using metrics such as Accuracy, False Positive Rates (FPR), False Negative Rates (FNR),
+      and disparity gaps.
+    </div>
+  </div><br>
+
+  <div class="card">
+    <div class="card-title">How to use the dashboard</div>
+    <div class="tiny">
+      The dashboard pages display precomputed baseline and mitigated results.
+      These charts help users compare subgroup performance and identify demographic disparities
+      that may not be visible through overall accuracy alone.
+    </div>
+  </div><br>
+
+  <div class="card">
+    <div class="card-title">How to use the plugin audit</div>
+    <div class="tiny">
+      The plugin page allows you to upload a CSV file containing classifier outputs.
+      The system validates the file format, computes fairness metrics, and optionally performs
+      threshold based mitigation if probability scores are included.
+    </div>
+  </div><br>
+
+  <div class="card">
+    <div class="card-title">Required CSV columns</div>
+    <div class="tiny">
+      <ul>
+        <li><b>y_true</b> - Ground truth label</li>
+        <li><b>y_pred</b> - Binary predicted label</li>
+        <li><b>y_score</b> - Model confidence or probability score (needed for mitigation)</li>
+        <li><b>race</b> - Demographic race group</li>
+        <li><b>age_group</b> - Demographic age category</li>
+      </ul>
+
+      You must provide <b>y_true</b>, <b>race</b>, and <b>age_group</b>,
+      and either <b>y_pred</b> or <b>y_score</b>.
+    </div>
+  </div><br>
+
+  <div class="card">
+    <div class="card-title">Understanding the metrics</div>
+    <div class="tiny">
+      <ul>
+        <li><b>Accuracy</b> - Overall proportion of correct predictions</li>
+        <li><b>FPR</b> - Rate of incorrectly predicting a positive outcome</li>
+        <li><b>FNR</b> - Rate of incorrectly predicting a negative outcome</li>
+        <li><b>Disparity Gap</b> - Difference between the highest and lowest subgroup metric values</li>
+      </ul>
+    </div>
+  </div><br>
+
+  <div class="card">
+    <div class="card-title">How mitigation works</div>
+    <div class="tiny">
+      If a <b>y_score</b> is provided, the system tests multiple thresholds and selects the one
+      that reduces demographic disparity while limiting overall performance degradation.
+      This is a post processing method which means it changes the decision threshold rather than retraining the model.
+    </div>
+  </div><br>
+
+  <div class="card">
+    <div class="card-title">Exporting charts</div>
+    <div class="tiny">
+      Each chart includes an export (Save) option in the top right Plotly toolbar.
+      You can download charts as image files for reports, presentations, or further review.
+    </div>
+  </div>
+{% endblock %}
