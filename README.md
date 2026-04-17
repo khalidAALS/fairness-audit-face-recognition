@@ -1,4 +1,4 @@
-# Fair-Face: Fairness Audit Dashboard and Mitigation Plugin
+# Fairness Audit Dashboard and Mitigation Plugin
 
 ## Paper
 Pending
